@@ -7,12 +7,36 @@ import (
 	"strconv"
 	"strings"
 
+	employee "github.com/nithishgwd/employee_Module"
 	office "github.com/nithishgwd/office_module"
+	team "github.com/nithishgwd/team_module"
 )
 
 func main() {
-	off := office.NewOffice()
 
+	// Access employee details from the employee package
+	emp1 := employee.NewEmployee("John", 30)
+	emp2 := employee.NewEmployee("Jane", 28)
+
+	// Create new teams
+	team1 := team.NewTeam("Team A")
+	team2 := team.NewTeam("Team B")
+
+	// Add employees to the teams
+	team1.AddEmployee(emp1)
+	team2.AddEmployee(emp2)
+
+	// Update employees today for the teams
+	team1.UpdateEmployeesToday(10)
+	team2.UpdateEmployeesToday(8)
+
+	// Display team information
+	fmt.Println("\nTeam Information:")
+	fmt.Printf("Team: %s, Employees Today: %d\n", team1.GetName(), team1.GetEmployeesToday())
+	fmt.Printf("Team: %s, Employees Today: %d\n", team2.GetName(), team2.GetEmployeesToday())
+
+	// Access office details from the office package
+	off := office.NewOffice()
 	off.AddTeam("Team A")
 	off.AddTeam("Team B")
 
@@ -58,5 +82,6 @@ func main() {
 
 		// Display all office information
 		off.DisplayOfficeInformation()
+
 	}
 }
